@@ -6,6 +6,10 @@ import { authUserController } from "./controllers/user/AuthUserController.js";
 
 const router = Router();
 
+router.get('/hello', (_, res)=>{
+  res.send('Hello World!')
+})
+
 router.post(
   "/users",
   validateUserSchema(createUserSchema),
