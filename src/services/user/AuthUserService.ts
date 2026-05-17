@@ -1,4 +1,4 @@
-import prismaClient from "../../prisma";
+import prismaClient from "../../prisma/index.js";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 
@@ -36,10 +36,9 @@ class AuthUserService {
       id: user.id,
       name: user.name,
       email: user.email,
-      token: token
-    }
+      token: token,
+    };
   }
 }
 
 export const authUserService = new AuthUserService();
-

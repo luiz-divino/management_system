@@ -1,8 +1,11 @@
-import * as path from 'path';
-import { addAliases } from 'module-alias';
+import * as path from "path";
+import { addAliases } from "module-alias";
 
-const files = path.resolve(__dirname, '../..');
+const isCompiledBuild = __filename.endsWith(".js");
+const aliasesRoot = isCompiledBuild
+  ? path.resolve(__dirname, "..")
+  : path.resolve(__dirname, "../..", "src");
 
 addAliases({
-  '@src': path.join(files, 'src'),
+  "@src": aliasesRoot,
 });
