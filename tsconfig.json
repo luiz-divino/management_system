@@ -51,5 +51,5 @@
 
   },
   "include": ["src/**/*"], // Arquivos a serem incluídos na compilação
-  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"] // Arquivos/pastas excluídos
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts", "dist"] // Arquivos/pastas excluídos
 }
