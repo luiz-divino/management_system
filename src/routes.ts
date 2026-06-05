@@ -14,12 +14,20 @@ import { DeleteTaskController } from "./controllers/task/DeleteTaskController.js
 import { DeleteUserController } from "./controllers/user/DeleteUserController.js";
 import { asyncHandler } from "./util/asyncHandler.js";
 import { ListTaskController } from "./controllers/task/ListTaskController.js";
+import {
+    createExpenseSchema,
+    listExpenseSchema,
+} from "./schemas/expenseSchema.js";
+import { CreateExpenseController } from "./controllers/expense/CreateExpenseController.js";
+import { ListExpenseController } from "./controllers/expense/ListExpenseController.js";
 
 const router = Router();
 const createUserController = new CreateUserController();
 const deleteUserController = new DeleteUserController();
 const deleteTaskController = new DeleteTaskController();
 const listTaskController = new ListTaskController();
+const createExpenseController = new CreateExpenseController();
+const listExpenseController = new ListExpenseController();
 
 router.get("/hello", (_, res) => {
     res.send("Hello World!");
@@ -68,6 +76,20 @@ router.delete(
     validateSchema(deleteTaskSchema),
     isAuthenticated,
     asyncHandler(deleteTaskController.handle.bind(deleteTaskController)),
+);
+
+router.post(
+    "/expenses",
+    validateSchema(createExpenseSchema),
+    isAuthenticated,
+    asyncHandler(createExpenseController.handle.bind(createExpenseController)),
+);
+
+router.get(
+    "/expenses",
+    validateSchema(listExpenseSchema),
+    isAuthenticated,
+    asyncHandler(listExpenseController.handle.bind(listExpenseController)),
 );
 
 export { router };
