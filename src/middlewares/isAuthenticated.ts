@@ -9,10 +9,10 @@ export const isAuthenticated = (
     req: Request,
     res: Response,
     next: NextFunction,
-) => {
+): void | Response<any, Record<string, any>> => {
     const { authorization } = req.headers;
     if (!authorization) {
-        res.status(401).json({
+        return res.status(401).json({
             error: "token not found",
         });
     }
@@ -22,11 +22,10 @@ export const isAuthenticated = (
             token!,
             process.env.JWT_SECRET! as string,
         ) as IPayload;
-        console.log(sub);
         req.userId = sub;
         return next();
     } catch (error) {
-        res.status(401).json({
+        return res.status(401).json({
             error: "invalid token",
         });
     }
