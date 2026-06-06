@@ -3,7 +3,7 @@ import { UpdateExpenseService } from "../../services/expense/UpdateExpenseServic
 export class UpdateExpenseController {
     async handle(req: Request, res: Response) {
         const expenseId = req.params.expenseId as string;
-        const id_user = req.userId as string;
+        const user_id = req.userId as string;
         const { description, amount, date, category } = req.body;
         const UpdateExpense = new UpdateExpenseService();
         try {
@@ -24,7 +24,7 @@ export class UpdateExpenseController {
                 amount: parsedAmount,
                 date,
                 category,
-                id_user,
+                user_id,
             });
 
             return res.status(200).json(expense);
