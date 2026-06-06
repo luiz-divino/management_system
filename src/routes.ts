@@ -7,6 +7,7 @@ import {
     createTaskSchema,
     deleteTaskSchema,
     listTaskSchema,
+    updateTaskSchema,
 } from "./schemas/taskSchema.js";
 import { createTaskController } from "./controllers/task/CreateTaskController.js";
 import { isAuthenticated } from "./middlewares/isAuthenticated.js";
@@ -14,18 +15,22 @@ import { DeleteTaskController } from "./controllers/task/DeleteTaskController.js
 import { DeleteUserController } from "./controllers/user/DeleteUserController.js";
 import { asyncHandler } from "./util/asyncHandler.js";
 import { ListTaskController } from "./controllers/task/ListTaskController.js";
+import { updateTaskController } from "./controllers/task/UpdateTaskController.js";
 import {
     createExpenseSchema,
+    deleteExpenseSchema,
     listExpenseSchema,
 } from "./schemas/expenseSchema.js";
 import { CreateExpenseController } from "./controllers/expense/CreateExpenseController.js";
 import { ListExpenseController } from "./controllers/expense/ListExpenseController.js";
+import { DeleteExpenseController } from "./controllers/expense/DeleteExpenseController.js";
 
 const router = Router();
 const createUserController = new CreateUserController();
 const deleteUserController = new DeleteUserController();
 const deleteTaskController = new DeleteTaskController();
 const listTaskController = new ListTaskController();
+const deleteExpenseController = new DeleteExpenseController();
 const createExpenseController = new CreateExpenseController();
 const listExpenseController = new ListExpenseController();
 
@@ -78,6 +83,14 @@ router.delete(
     asyncHandler(deleteTaskController.handle.bind(deleteTaskController)),
 );
 
+// atualizar uma tarefa
+router.patch(
+    "/tasks/:taskId",
+    validateSchema(updateTaskSchema),
+    isAuthenticated,
+    asyncHandler(updateTaskController.handle.bind(updateTaskController)),
+);
+
 router.post(
     "/expenses",
     validateSchema(createExpenseSchema),
@@ -90,6 +103,13 @@ router.get(
     validateSchema(listExpenseSchema),
     isAuthenticated,
     asyncHandler(listExpenseController.handle.bind(listExpenseController)),
+);
+
+router.delete(
+    "/expenses/:expenseId",
+    validateSchema(deleteExpenseSchema),
+    isAuthenticated,
+    asyncHandler(deleteExpenseController.handle.bind(deleteExpenseController)),
 );
 
 export { router };
