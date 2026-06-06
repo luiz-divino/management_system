@@ -14,12 +14,14 @@ export const validateSchema =
             return next();
         } catch (error) {
             if (error instanceof ZodError) {
-                res.status(400).json({
+                return res.status(400).json({
                     details: error.issues.map((issue) => ({
+                        field: issue.path.join(".") || "body",
                         message: issue.message,
                     })),
                 });
             }
+
             return res.status(500).json({
                 message: "Internal Server Error",
             });
