@@ -21,5 +21,12 @@ export const listExpenseSchema = z.object({
     }),
 });
 
+export const deleteExpenseSchema = z.object({
+    params: z.object({
+        expenseId: z.string().min(1, "Expense ID is required"),
+    }),
+});
+
 export type createExpenseSchemaType = typeof createExpenseSchema;
 export type listExpenseSchemaType = typeof listExpenseSchema;
+export type deleteExpenseSchemaType = typeof deleteExpenseSchema;
