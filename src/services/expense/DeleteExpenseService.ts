@@ -9,7 +9,7 @@ export class DeleteExpenseService {
                 },
                 select: {
                     id: true,
-                    title: true,
+                    description: true,
                 }
             })
         } catch (error) {
