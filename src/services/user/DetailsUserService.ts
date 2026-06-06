@@ -1,22 +1,22 @@
 import prismaClient from "../../prisma/index.js";
 
 class DetailsUserService {
-  async execute(id_user: string) {
-    const user = await prismaClient.user.findFirst({
-      where: {
-        id: id_user,
-      },
-      select: {
-        id: true,
-        email: true,
-        name: true,
-        createdAt: true,
-      },
-    });
-    if (!user) {
-      throw new Error("user not found");
+    async execute(user_id: string) {
+        const user = await prismaClient.user.findFirst({
+            where: {
+                id: user_id,
+            },
+            select: {
+                id: true,
+                email: true,
+                name: true,
+                createdAt: true,
+            },
+        });
+        if (!user) {
+            throw new Error("user not found");
+        }
+        return user;
     }
-    return user;
-  }
 }
 export const datailsUser = new DetailsUserService();

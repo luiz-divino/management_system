@@ -3,7 +3,7 @@ import prismaClient from "../../prisma/index.js";
 
 interface UpdateExpenseData {
     expenseId: string;
-    id_user: string;
+    user_id: string;
     description?: string;
     amount?: number;
     date?: string;
@@ -17,12 +17,12 @@ export class UpdateExpenseService {
         amount,
         date,
         category,
-        id_user,
+        user_id,
     }: UpdateExpenseData) {
         const expense = await prismaClient.expense.findFirst({
             where: {
                 id: expenseId,
-                id_user,
+                user_id,
             },
             select: {
                 id: true,
