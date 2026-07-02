@@ -26,6 +26,7 @@ import { CreateExpenseController } from "./controllers/expense/CreateExpenseCont
 import { ListExpenseController } from "./controllers/expense/ListExpenseController.js";
 import { DeleteExpenseController } from "./controllers/expense/DeleteExpenseController.js";
 import { updateExpenseController } from "./controllers/expense/UpdateExpenseController.js";
+import { DetailsUserController } from "./controllers/user/DetailsUserController.js";
 
 const router = Router();
 const createUserController = new CreateUserController();
@@ -35,6 +36,7 @@ const listTaskController = new ListTaskController();
 const deleteExpenseController = new DeleteExpenseController();
 const createExpenseController = new CreateExpenseController();
 const listExpenseController = new ListExpenseController();
+const detailsUserController = new DetailsUserController();
 
 router.get("/hello", (_, res) => {
     res.send("Hello World!");
@@ -52,6 +54,13 @@ router.post(
     "/session",
     validateSchema(LoginUserSchema),
     asyncHandler(authUserController.handle.bind(authUserController)),
+);
+
+// informações do usuario
+router.get(
+    "/users/me",
+    isAuthenticated,
+    asyncHandler(detailsUserController.handle.bind(detailsUserController)),
 );
 
 // deletar a propria conta
