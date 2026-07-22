@@ -1,52 +1,53 @@
 {
-  "name": "personal-management-system",
-  "version": "1.0.0",
-  "types": "node",
-  "description": "",
-  "main": "dist/server.js",
-  "_moduleAliases": {
-    "@src": "dist"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx prisma generate && rm -rf dist && tsc",
-    "dev": "tsx watch src/server.ts",
-    "migrate:deploy": "npx prisma migrate deploy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/luiz-divino/personal-management-system.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/luiz-divino/personal-management-system/issues"
-  },
-  "homepage": "https://github.com/luiz-divino/personal-management-system#readme",
-  "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^25.6.0",
-    "@types/pg": "^8.20.0",
-    "dotenv": "^17.4.2",
-    "prisma": "^7.8.0",
-    "typescript": "^6.0.3"
-  },
-  "dependencies": {
-    "@prisma/adapter-pg": "^7.8.0",
-    "@prisma/client": "^7.8.0",
-    "@types/module-alias": "^2.0.4",
-    "bcrypt": "^6.0.0",
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "module-alias": "^2.3.4",
-    "pg": "^8.20.0",
-    "tsx": "^4.21.0",
-    "zod": "^4.3.6"
-  }
+    "name": "personal-management-system",
+    "version": "1.0.0",
+    "types": "node",
+    "description": "",
+    "main": "dist/server.js",
+    "_moduleAliases": {
+        "@src": "dist"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "npx prisma generate && rm -rf dist && tsc",
+        "dev": "tsx watch src/server.ts",
+        "migrate:deploy": "npx prisma migrate deploy",
+        "start": "node dist/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/luiz-divino/personal-management-system.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/luiz-divino/personal-management-system/issues"
+    },
+    "homepage": "https://github.com/luiz-divino/personal-management-system#readme",
+    "devDependencies": {
+        "@types/bcrypt": "^6.0.0",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.6",
+        "@types/jsonwebtoken": "^9.0.10",
+        "@types/node": "^25.6.0",
+        "@types/pg": "^8.20.0",
+        "dotenv": "^17.4.2",
+        "prisma": "^7.8.0",
+        "typescript": "^6.0.3"
+    },
+    "dependencies": {
+        "@prisma/adapter-pg": "^7.8.0",
+        "@prisma/client": "^7.8.0",
+        "@types/module-alias": "^2.0.4",
+        "bcrypt": "^6.0.0",
+        "cors": "^2.8.6",
+        "express": "^5.2.1",
+        "jsonwebtoken": "^9.0.3",
+        "module-alias": "^2.3.4",
+        "pg": "^8.20.0",
+        "tsx": "^4.21.0",
+        "zod": "^4.3.6"
+    }
 }

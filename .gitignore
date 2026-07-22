@@ -125,8 +125,6 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-package-lock.json
-
 # pnpm
 .pnpm-store
 
@@ -145,4 +143,4 @@ vite.config.ts.timestamp-*
 .vite/
 
 /src/generated/prisma
-package-lock.json
+
